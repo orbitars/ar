@@ -1,8 +1,8 @@
 # Astory App - Beta
 
 
-# Link a la pag: https://sebaav12.github.io/Prototipo_Innova/
+# Link para encender la camara: https://orbitars.github.io/ar/
 
 
-# QR para el modelo A: https://sebaav12.github.io/Prototipo_Innova/assets/markers/HIRO.jpg
-# QR para el modelo B: https://sebaav12.github.io/Prototipo_Innova/assets/markers/kanji.png
+# QR para el modelo A: https://orbitars.github.io/ar/assets/markers/HIRO.jpg
+# QR para el modelo B: https://orbitars.github.io/ar/assets/markers/kanji.png
