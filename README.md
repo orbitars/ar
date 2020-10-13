@@ -4,12 +4,13 @@
 # Link para encender la camara: https://orbitars.github.io/ar/
 
 
-# QR para el modelo A: https://orbitars.github.io/ar/assets/markers/HIRO.jpg
-# QR para el modelo B: https://orbitars.github.io/ar/assets/markers/kanji.png
+# QR para el modelo Earth: https://orbitars.github.io/ar/assets/markers_png/earth.png
+# QR para el modelo Mars: https://orbitars.github.io/ar/assets/markers_png/mars.jpg
+# QR para el modelo Satelite: https://orbitars.github.io/ar/assets/markers_png/satelite.png
 
 
 # Modelos obtenidos de: 
 
-# Mdelo solar system: https://poly.google.com/view/3_tN7i962hZ
-
-# earth https://poly.google.com/view/53DjTbNlu9z
+# Modelo Earth: https://poly.google.com/view/0nEWYSdUqRq
+# Modelo Mars: https://poly.google.com/view/eUnr3ChQ2wl
+# Modelo Satelite: https://poly.google.com/view/fnFCCFiHbQt
