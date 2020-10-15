@@ -1,78 +1,101 @@
+
+<!doctype html>
+
 <html>
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+    </head>
 
-
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-  <script src="aframe-ar.js"></script>
-
-  <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-
-
-  <body style='margin : 0px; overflow: hidden;'>
-    
-    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'
-    renderer="logarithmicDepthBuffer: true;"
-    vr-mode-ui="enabled: false"
-    gesture-detector
-    id="scene">
-
-        <!-- Modelo Satelite-->
-        <a-assets>
-            <a-asset-item
-                id="animated-asset"
-                src="assets/models/satelite/satelite.gltf"
-            ></a-asset-item>
-        </a-assets>
-        
-        <!-- Marcadores de modelos-->
-
-        <!-- Marcador Mars-->
-        <a-marker preset="hiro">
-            <a-entity
-            position="0 0 0"
-            scale="0.001679621049852858 0.001679621049852858 0.001679621049852858"
-            gltf-model="assets/models/mars/mars.gltf"
-            ></a-entity>
-        </a-marker>
-      
-        <!-- Marcador Earth-->
-        <a-marker preset="kanji">
-            <a-entity
-            position="0 0 0"
-            scale="0.020583155377681475 0.020583155377681475 0.020583155377681475"
-            rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-            gltf-model="assets/models/earth/earth.gltf"
-            >
-            </a-entity>
-        </a-marker>
-        
-        <!-- Marcador Satelite-->
-        <a-marker
-            id="animated-marker"
-            type="pattern"
-            preset="custom"
-            url="assets/markers_patt/marker_satelite.patt"
-            raycaster="objects: .clickable"
-            emitevents="true"
-            cursor="fuse: false; rayOrigin: mouse;"
-            id="markerA"
+    <body style="margin: 0; overflow: hidden;">
+        <a-scene
+            vr-mode-ui="enabled: false;"
+            loading-screen="enabled: false;"
+            renderer="logarithmicDepthBuffer: true;"
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+            id="scene"
+            embedded
+            gesture-detector
         >
-            <a-entity
-                id="bowser-model"
-                scale="0.04159623059548553 0.04159623059548553 0.04159623059548553"
-                animation-mixer="loop: repeat"
-                gltf-model="#animated-asset"
-                class="clickable"
-                gesture-handler="minScale: 0.25; maxScale: 10"
-            ></a-entity>
+            <a-assets>
+                <a-asset-item
+                    id="earth-asset"
+                    src="assets/models/earth/asset.gltf"
+                ></a-asset-item>
+                <a-asset-item
+                    id="mars-asset"
+                    src="assets/models/mars/asset.gltf"
+                ></a-asset-item>
+                <a-asset-item
+                    id="satelite-asset"
+                    src="assets/models/satelite/asset.gltf"
+                ></a-asset-item>
+            </a-assets>
 
-        </a-marker>
-      
-        <a-entity camera></a-entity>
+            <a-marker
+                id="earth-marker"
+                type="pattern"
+                preset="custom"
+                url="assets/markers_patt/marker_earth.patt"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                id="markerA"
+            >
+                <a-entity
+                    id="earth-model"
+                    scale="0.020583155377681475 0.020583155377681475 0.020583155377681475"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#earth-asset"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
 
-    </a-scene>
-    
-    
-  </body>
+            <a-marker
+                id="mars-marker"
+                type="pattern"
+                preset="custom"
+                url="assets/markers_patt/marker_mars.patt"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                id="markerB"
+            >
+                <a-entity
+                    id="mars-model"
+                    scale="0.002099526312316072 0.002099526312316072 0.002099526312316072"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#mars-asset"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+
+            <a-marker
+                id="satelite-marker"
+                type="pattern"
+                preset="custom"
+                url="assets/markers_patt/marker_satelite.patt"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                id="markerA"
+            >
+                <a-entity
+                    id="satelite-model"
+                    scale="0.04159623059548553 0.04159623059548553 0.04159623059548553"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#satelite-asset"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+
+            <a-entity camera></a-entity>
+        </a-scene>
+    </body>
 </html>
