@@ -1,101 +1,136 @@
-
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
-    <head>
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-    </head>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+    <script>
+      window.onload = function () {
+        document.querySelector(".ayuda").addEventListener("click", function () {
+          alert(
+            "Para utilizar esta aplicacion, debes utilizar la camara de tu celular a traves de esta pagina web y escanear los codigos QRs que estan disponibles en orbitars.github.io acerca tu camara a los distintos qrs disponibles y veras como estos se muestran como modelos 3D"
+          );
+        });
+      };
+    </script>
+    <style>
+      .buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+      }
 
-    <body style="margin: 0; overflow: hidden;">
-        <a-scene
-            vr-mode-ui="enabled: false;"
-            loading-screen="enabled: false;"
-            renderer="logarithmicDepthBuffer: true;"
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-            id="scene"
-            embedded
-            gesture-detector
-        >
-            <a-assets>
-                <a-asset-item
-                    id="earth-asset"
-                    src="assets/models/earth/asset.gltf"
-                ></a-asset-item>
-                <a-asset-item
-                    id="mars-asset"
-                    src="assets/models/mars/asset.gltf"
-                ></a-asset-item>
-                <a-asset-item
-                    id="satelite-asset"
-                    src="assets/models/satelite/asset.gltf"
-                ></a-asset-item>
-            </a-assets>
+      .boton {
+        margin: 1em;
+        padding: 0.25em;
+        border-radius: 4px;
+        border: none;
+        background: white;
+        color: black;
+        width: 4em;
+        height: 2em;
+      }
+    </style>
+  </head>
 
-            <a-marker
-                id="earth-marker"
-                type="pattern"
-                preset="custom"
-                url="assets/markers_patt/marker_earth.patt"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
-            >
-                <a-entity
-                    id="earth-model"
-                    scale="0.020583155377681475 0.020583155377681475 0.020583155377681475"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#earth-asset"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
+  <body style="margin: 0; overflow: hidden">
+    <div class="buttons">
+      <button class="boton ayuda">Ayuda</button>
+    </div>
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      loading-screen="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+      id="scene"
+      embedded
+      gesture-detector
+    >
+      <a-assets>
+        <a-asset-item
+          id="earth-asset"
+          src="assets/models/earth/asset.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mars-asset"
+          src="assets/models/mars/asset.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="satelite-asset"
+          src="assets/models/satelite/asset.gltf"
+        ></a-asset-item>
+      </a-assets>
 
-            <a-marker
-                id="mars-marker"
-                type="pattern"
-                preset="custom"
-                url="assets/markers_patt/marker_mars.patt"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerB"
-            >
-                <a-entity
-                    id="mars-model"
-                    scale="0.002099526312316072 0.002099526312316072 0.002099526312316072"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#mars-asset"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
+      <a-marker
+        id="earth-marker"
+        type="pattern"
+        preset="custom"
+        url="assets/markers_patt/marker_earth.patt"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+        id="markerA"
+      >
+        <a-entity
+          id="earth-model"
+          scale="0.020583155377681475 0.020583155377681475 0.020583155377681475"
+          animation-mixer="loop: repeat"
+          gltf-model="#earth-asset"
+          class="clickable"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
 
-            <a-marker
-                id="satelite-marker"
-                type="pattern"
-                preset="custom"
-                url="assets/markers_patt/marker_satelite.patt"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
-            >
-                <a-entity
-                    id="satelite-model"
-                    scale="0.04159623059548553 0.04159623059548553 0.04159623059548553"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#satelite-asset"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
+      <a-marker
+        id="mars-marker"
+        type="pattern"
+        preset="custom"
+        url="assets/markers_patt/marker_mars.patt"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+        id="markerB"
+      >
+        <a-entity
+          id="mars-model"
+          scale="0.002099526312316072 0.002099526312316072 0.002099526312316072"
+          animation-mixer="loop: repeat"
+          gltf-model="#mars-asset"
+          class="clickable"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
 
-            <a-entity camera></a-entity>
-        </a-scene>
-    </body>
+      <a-marker
+        id="satelite-marker"
+        type="pattern"
+        preset="custom"
+        url="assets/markers_patt/marker_satelite.patt"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+        id="markerA"
+      >
+        <a-entity
+          id="satelite-model"
+          scale="0.04159623059548553 0.04159623059548553 0.04159623059548553"
+          animation-mixer="loop: repeat"
+          gltf-model="#satelite-asset"
+          class="clickable"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 </html>
