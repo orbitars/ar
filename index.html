@@ -68,6 +68,10 @@
           id="satelite-asset"
           src="assets/models/satelite/asset.gltf"
         ></a-asset-item>
+        <a-asset-item
+          id="dccin-asset"
+          src="assets/models/dccin/DCCinPose.gltf"
+        ></a-asset-item>
       </a-assets>
 
       <!-- Para la implementación de los marcadores y modelos se hizo uso de la herramineta: https://ar-js-org.github.io/studio/-->
@@ -87,7 +91,7 @@
           id="earth-model"
           scale="0.020583155377681475 0.020583155377681475 0.020583155377681475"
           animation-mixer="loop: repeat"
-          gltf-model="#earth-asset"
+          gltf-model="#dccin-asset"
           class="clickable"
           gesture-handler
         ></a-entity>
